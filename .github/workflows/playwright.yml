@@ -29,5 +29,6 @@ jobs:
         playwright install --with-deps
 
     - name: Run Tests
-      run: |
-        pytest -v
+      run: pytest -v
+      env:
+        HEADLESS: true
