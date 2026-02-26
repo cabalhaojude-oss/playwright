@@ -2,9 +2,9 @@ name: Playwright Python Tests
 
 on:
   push:
-    branches: [ main ]
+    branches: [ playwright ]
   pull_request:
-    branches: [ main ]
+    branches: [ playwright ]
 
 jobs:
   test:
