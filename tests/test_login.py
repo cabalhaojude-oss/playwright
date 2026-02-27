@@ -12,7 +12,7 @@ def test_valid_login(login_page, page):
 @pytest.mark.invalid_login
 def test_invalid_username(login_page, page):
     login_page.login(INVALID_USERNAME["username"], INVALID_USERNAME["password"])
-    expect(page.locator("#error")).to_contain_text("Your username is invalid!")
+    expect(page.locator("#error")).to_contain_text("Your is invalid!")
     # page.screenshot(path= "invalid_username_screenshot.png")
 
 @pytest.mark.invalid_login

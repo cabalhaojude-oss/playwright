@@ -9,6 +9,9 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        browser: [chromium, firefox, webkit]
 
     steps:
     - name: Checkout code
@@ -32,3 +35,15 @@ jobs:
       run: pytest -v
       env:
         HEADLESS: true
+
+#    - name: Run Tests with Allure
+#      run: |
+#        pytest --alluredir=allure-results -v
+
+    - name: Retries Failed Tests
+      run: |
+        pytest -v --reruns 2 --reruns-delay 5
+
+    - name: Run Tests in Parallel
+      run: |
+        pytest -v --browser ${{ matrix.browser }} --headed=false
