@@ -1,0 +1,49 @@
+name: Playwright Python Tests
+
+on:
+  push:
+    branches: [ playwright ]
+  pull_request:
+    branches: [ playwright ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        browser: [chromium, firefox, webkit]
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.14.2'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Install Playwright Browsers
+      run: |
+        playwright install --with-deps
+
+    - name: Run Tests
+      run: pytest -v
+      env:
+        HEADLESS: true
+
+    - name: Run Tests with Allure
+      run: |
+        pytest --alluredir=allure-results -v
+
+    - name: Retries Failed Tests
+      run: |
+        pytest -v --reruns 2 --reruns-delay 5
+
+    - name: Run Tests in Parallel
+      run: |
+        pytest -v --browser ${{ matrix.browser }}

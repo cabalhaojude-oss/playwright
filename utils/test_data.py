@@ -3,7 +3,11 @@ VALID_USER = {
     "password": "Password123"
 }
 
-INVALID_USER = {
+INVALID_USERNAME = {
     "username": "incorrectUser",
     "password": "Password123"
+}
+INVALID_PASSWORD = {
+    "username": "student",
+    "password": "incorrectPassword "
 }

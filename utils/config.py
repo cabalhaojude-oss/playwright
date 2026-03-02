@@ -1,3 +1,3 @@
 BASE_URL = "https://practicetestautomation.com/practice-test-login/"
 BROWSER = "chromium"
-HEADLESS = False
+
