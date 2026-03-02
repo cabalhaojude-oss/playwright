@@ -46,4 +46,4 @@ jobs:
 
     - name: Run Tests in Parallel
       run: |
-        pytest -v --browser ${{ matrix.browser }} --headed=false
+        pytest -v --browser ${{ matrix.browser }}
