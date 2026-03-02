@@ -36,9 +36,9 @@ jobs:
       env:
         HEADLESS: true
 
-#    - name: Run Tests with Allure
-#      run: |
-#        pytest --alluredir=allure-results -v
+    - name: Run Tests with Allure
+      run: |
+        pytest --alluredir=allure-results -v
 
     - name: Retries Failed Tests
       run: |
